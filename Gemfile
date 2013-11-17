@@ -8,6 +8,10 @@ gem 'rails', '4.0.0'
 
 gem 'pg'
 
+gem 'better_errors'
+gem 'binding_of_caller'
+gem 'hirb'
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
 
