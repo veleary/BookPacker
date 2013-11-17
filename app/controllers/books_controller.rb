@@ -4,12 +4,13 @@ class BooksController < ApplicationController
   # GET /books
   # GET /books.json
   def index
+    @book = Nokogiri::HTML(File.read("/data/book1.html"))
     @books = Book.all
   end
 
   def read_booklist
-    booklist = File.read("/data/book1.html")
-    
+    @book = Nokogiri::HTML(File.read("/data/book1.html"))
+
   end
 
   # GET /books/1
