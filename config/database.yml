@@ -17,10 +17,10 @@
 development:
   adapter: postgresql
   encoding: unicode
-  database: bookpacker_development
+  database: bookpacker-development
   pool: 5
-  username: bookpacker
-  password:
+  port: 5432
+
 
   # Connect on a TCP socket. Omitted by default since the client uses a
   # domain socket that doesn't need configuration. Windows does not have
@@ -46,15 +46,14 @@ development:
 test:
   adapter: postgresql
   encoding: unicode
-  database: bookpacker_test
+  database: bookpacker-test
   pool: 5
-  username: bookpacker
-  password:
+  port: 5432
+  
 
 production:
   adapter: postgresql
   encoding: unicode
-  database: bookpacker_production
+  database: bookpacker-production
   pool: 5
-  username: bookpacker
-  password:
+  port: 5432
