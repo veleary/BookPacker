@@ -4,26 +4,15 @@ class BooksController < ApplicationController
   # GET /books
   # GET /books.json
   def index
-    @book = Nokogiri::HTML(openFile.read("data/book1.html")))
     @books = Book.all
+    
   end
 
-  def read_booklist(filename)
-    @book1 = Nokogiri::HTML(File.read("/data/#{filename}"))
-  end
+  # def get_book_document(filename)
+    
+  # end
 
-  def get_product_details(book)
-    book_title = book.at_css("strong:nth-child(1) a").text
-    book_author = book.at_css(".buying span a").text
-    book_price = book.at_css(".listprice").text
-    book_ship_weight = book.at_css("#productDetailsTable li:nth-child(7)").text
-    book_isbn10 = book.at_css("#productDetailsTable li:nth-child(4)").text
-    book_isbn13 = book.at_css("#productDetailsTable li:nth-child(5)").text
-    book_total_pages = book.at_css("#productDetailsTable li:nth-child(1)").text
-    book_publisher = book.at_css("#productDetailsTable li:nth-child(2)").text
-    book_language = book.at_css("#productDetailsTable li:nth-child(3)").text
-    book_description = book.at_css("#postBodyPS div").text    
-  end
+   
 
   # GET /books/1
   # GET /books/1.json
@@ -42,7 +31,9 @@ class BooksController < ApplicationController
   # POST /books
   # POST /books.json
   def create
+
     @book = Book.new(book_params)
+
 
     respond_to do |format|
       if @book.save
