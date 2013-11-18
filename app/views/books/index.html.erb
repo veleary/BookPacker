@@ -1,3 +1,5 @@
+
+
 <h1>Listing books</h1>
 <% @books.each do |book| %>      
 <h2><%= book.title %></h2>
@@ -15,7 +17,7 @@
 <% end %>
 
 <br>
-<% ship_weight_list(@books) %>
-<%= packing_list%>
+<%= ship_weight_list(@books) %>
+<%= JSON.pretty_generate(@boxes).html_safe %>
 <%= link_to 'New Book', new_book_path %>
 
