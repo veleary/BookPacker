@@ -1,6 +1,2 @@
 module BooksHelper
-
-
-
-
 end
