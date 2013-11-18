@@ -8,16 +8,7 @@ class BooksController < ApplicationController
     
   end
 
- def prepare_to_pack
-  ship_weight_hash = {}
-  Book.all.each do |book|
-    ship_weight_hash[book.title] = book.ship_weight 
-  end
- end 
 
- def pack_books
-
- end  
 
   # GET /books/1
   # GET /books/1.json
