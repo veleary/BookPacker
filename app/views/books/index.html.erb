@@ -4,8 +4,8 @@
 <% @books.each do |book| %>
       
 <h2><%= book.title %></h2>
-<h3><%= book.author %></h3>   
-<h4><%= book.price %></h4>
+<h3>Author: <%= book.author %></h3>   
+<h4>Price: $<%= book.price %></h4>
 <h5><%= book.isbn10 %><h5>
 <h5><%= book.isbn13 %></h5>
 <h5><%= book.total_pages%></h5>
