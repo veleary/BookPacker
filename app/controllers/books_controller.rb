@@ -8,11 +8,7 @@ class BooksController < ApplicationController
     
   end
 
-  # def get_book_document(filename)
     
-  # end
-
-   
 
   # GET /books/1
   # GET /books/1.json
