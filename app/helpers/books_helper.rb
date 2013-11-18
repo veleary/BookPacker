@@ -1,35 +1,31 @@
 module BooksHelper
   
   def create_box(id, weight)
-    box = {"id" => id, "Total_Weight" => 0}
+        
+    box = {"id" => id, "Total_Weight" => weight, "Book_list" => []}
     @boxes << box      
     pack_books
   end
 
-  def prepare_to_pack(books)
+  def ship_weight_list(books)
     @weights = []
-    @book_titles = []
-    books.each do |book|
-      @weights << book.ship_weight 
-      @book_titles << book.title
-    end
+    Book.all.each do |book|       
+      @weights << book.ship_weight     
+    end 
     @boxes = []
-    @empty_box = []
-    @box_list = {}
     create_box(1, 0)
-  end 
+  end
 
- def pack_books 
-  @box = @boxes.last    
+  def pack_books       
     @weights.each_with_index do  |weight, index|
-      sum = weight.to_i + @box["Total_Weight"]
-      if sum <= 10
-        @box["Total_Weight"] += weight.to_i
-        @box_list[@box["id"]] = Book.find_by_ship_weight(weight).title
-        # @book_titles.delete_at(index)
+      box = @boxes.last
+      sum = weight.to_f + box["Total_Weight"]
+      if  sum <= 10
+        box["Total_Weight"] += weight.to_f
+        box["Book_list"] <<  Book.find_by_ship_weight(weight).title
         @weights.delete_at(index)
       else
-        new_box_id = @box["id"] + 1
+        new_box_id = box["id"] + 1
         create_box(new_box_id, 0)       
       end
     end
@@ -38,6 +34,8 @@ module BooksHelper
 
   def packing_list
     return @boxes
+    # return @boxes.last
+    # return @weights
     # return @box_list
   end
 end
