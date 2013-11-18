@@ -1,5 +1,5 @@
 module BooksHelper
-  
+  require 'json'
   def create_box(id, weight)
         
     box = {"id" => id, "Total_Weight" => weight, "Book_list" => []}
@@ -33,7 +33,10 @@ module BooksHelper
 
 
   def packing_list
-    return @boxes
+    return JSON.pretty_generate(@boxes).html_safe;
+    # return @boxes
+      # Box_Number = box[id] 
+
     # return @boxes.last
     # return @weights
     # return @box_list
