@@ -12,7 +12,6 @@
 <h5>Language: <%= book.language %></h5>
 <h5>Shipping Weight: <%= book.ship_weight %> lbs</h5>
 <%= link_to 'Show', book %>
-<%= link_to 'Edit', edit_book_path(book) %>
 <%= link_to 'Delete', book, method: :delete, data: { confirm: 'Are you sure?' } %>
 <% end %>
 
