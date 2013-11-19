@@ -13,7 +13,7 @@ task :fetch_book_details => :environment do
     author = doc.at_css(".buying span a").text 
 
     # Retrieve Price Information
-    price = doc.at_css(".bb_price").text
+    price = doc.at_css(".bb_price").text[/[0-9\.\S0-9]+/]n
 
     # Retrieve Ship Weight Information 
     ship_weight = doc.at_css("#productDetailsTable li:nth-child(7)").text[/[0-9\.]+/]
