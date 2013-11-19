@@ -1,6 +1,6 @@
 module BooksHelper
   
-  require 'json'
+
   def create_box(id, weight)        
     box = {"box" => {"id" => id, "total_weight" => weight, "contents" => []}}
     @boxes << box      
@@ -42,5 +42,4 @@ module BooksHelper
       end
     end
   end
-
 end

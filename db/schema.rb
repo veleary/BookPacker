@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 20131116232718) do
   create_table "books", force: true do |t|
     t.string   "title"
     t.string   "author"
-    t.decimal  "price"
+    t.string   "price"
     t.string   "ship_weight"
     t.string   "isbn10"
     t.string   "isbn13"

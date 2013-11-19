@@ -3,7 +3,7 @@ class CreateBooks < ActiveRecord::Migration
     create_table :books do |t|
       t.string :title
       t.string :author
-      t.decimal :price
+      t.string :price
       t.string :ship_weight
       t.string :isbn10
       t.string :isbn13
