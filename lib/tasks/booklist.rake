@@ -36,24 +36,12 @@ task :fetch_book_details => :environment do
     language = doc.at_css("#productDetailsTable li:nth-child(3)").text[/(?<=\s).*/]
 
     # description = doc.at_css("#postBodyPS div").text 
-     
+
     book.update_attributes(title: title, author: author, price: price, ship_weight: ship_weight, isbn10: isbn10, isbn13: isbn13, total_pages: total_pages, publisher: publisher, language: language)
   end
-  # #File for Book 9 and 11 have different HTML format for the price compared to the other files
-  # book11 = Book.create(filename: "book11.html")
-  # book9 = Book.create(filename: "book9.html")
-  # new_doc = Nokogiri::HTML(File.read("data/#{book11.filename}"))
-
-  # price = new_doc.at_css("#actualPriceValue .priceLarge").text
-  # book11.update_attributes(price: price)
   
-  # new_doc = Nokogiri::HTML(File.read("data/#{book9.filename}"))
-  # price = new_doc.at_css("#actualPriceValue .priceLarge").text
-  # book9.update_attributes(price: price)
-
-
   # File for Book 20 has a different HTML format for the shipping weight compared to the other files
-  book20 = Book.create(filename: "book20.html")
+  book20 = Book.find_by_filename("book20.html")
   new_doc = Nokogiri::HTML(File.read("data/#{book20.filename}"))
   ship_weight = new_doc.at_css("#productDetailsTable li:nth-child(6)").text[/[0-9\.]+/]
   book20.update_attributes(ship_weight: ship_weight)
