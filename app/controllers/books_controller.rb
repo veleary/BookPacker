@@ -20,10 +20,7 @@ class BooksController < ApplicationController
     @book = Book.new
   end
 
-  # GET /books/1/edit
-  def edit
-  end
-
+  
   # POST /books
   # POST /books.json
   def create
