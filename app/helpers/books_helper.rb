@@ -1,12 +1,7 @@
 module BooksHelper
   
-
-  def create_box(id, weight)        
-    box = {"box" => {"id" => id, "total_weight" => weight, "contents" => []}}
-    @boxes << box      
-    pack_books
-  end
-
+  # Make my list of book shipping weights
+  # This calls the create_box method to start the packing process
   def ship_weight_list(books)
     @weights = []
     books.each do |book|       
@@ -16,6 +11,15 @@ module BooksHelper
     create_box(1, 0)
   end
 
+  # This creates a box which is a hash with a number, the boxes total weight, and the boxes contents (in this case the books that will be shipped in this box)
+  def create_box(id, weight)        
+    box = {"box" => {"id" => id, "total_weight" => weight, "contents" => []}}
+    @boxes << box      
+    pack_books
+  end
+
+  
+  # This adds up the books' weights and determines which box the books need to be placed. This also adds all the content information for each book that is added to the box. This will be used in the JSON output. 
   def pack_books       
     @weights.each_with_index do  |weight, index|
       box = @boxes.last
