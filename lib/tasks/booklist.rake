@@ -49,25 +49,13 @@ task :fetch_book_details => :environment do
   # File for Book 12 has a different HTML format compared to the other files
   book = Book.find_by_filename("book12.html")
   book12 = Nokogiri::HTML(File.read("data/#{book.filename}"))
-
-  # Retrieve language information
   language = book12.at_css("#productDetailsTable li:nth-child(4)").text[/(?<=\s).*/]
-
-  # Retrieve total pages information
   total_pages = book12.at_css("#productDetailsTable li:nth-child(2)").text[/[0-9\.]+/]
-
-  # Retrieve publisher information
   publisher = book12.at_css("#productDetailsTable li:nth-child(3)").text[/(?<=\s).*/]
-
-  # Retrieve ISBN-10 information
   full_isbn10= book12.at_css("#productDetailsTable li:nth-child(5)").text
   isbn10 = full_isbn10.split("\s").last
-
-  # Retrieve ISBN-13 information
   full_isbn13 = book12.at_css("#productDetailsTable li:nth-child(6)").text
   isbn13 = full_isbn13.split("\s").last  
-
-  # Retrieve shipping weight information
   ship_weight = book12.at_css("#productDetailsTable li:nth-child(8)").text[/[0-9\.]+/]
 
   book.update_attributes(language: language, total_pages: total_pages, publisher: publisher, isbn10: isbn10, isbn13: isbn13, ship_weight: ship_weight)
@@ -75,25 +63,13 @@ task :fetch_book_details => :environment do
   # File for Book 6 has a different HTML format compared to the other files
   book = Book.find_by_filename("book6.html")
   book6 = Nokogiri::HTML(File.read("data/#{book.filename}"))
-
-  # Retrieve language information
   language = book6.at_css("#productDetailsTable li:nth-child(4)").text[/(?<=\s).*/]
-
-  # Retrieve total pages information
   total_pages = book6.at_css("#productDetailsTable li:nth-child(2)").text[/[0-9\.]+/]
-
-  # Retrieve publisher information
   publisher = book6.at_css("#productDetailsTable li:nth-child(3)").text[/(?<=\s).*/]
-
-  # Retrieve ISBN-10 information
   full_isbn10= book6.at_css("#productDetailsTable li:nth-child(5)").text
   isbn10 = full_isbn10.split("\s").last
-
-  # Retrieve ISBN-13 information
   full_isbn13 = book6.at_css("#productDetailsTable li:nth-child(6)").text
   isbn13 = full_isbn13.split("\s").last  
-
-  # Retrieve shipping weight information
   ship_weight = book6.at_css("#productDetailsTable li:nth-child(8)").text[/[0-9\.]+/]
 
   book.update_attributes(language: language, total_pages: total_pages, publisher: publisher, isbn10: isbn10, isbn13: isbn13, ship_weight: ship_weight)
